@@ -1,0 +1,1832 @@
+{
+  "report": {
+    "generated_at": "2026-10-06T11:14:20.714324+00:00",
+    "repository": "mytestcompany",
+    "target": "/home/que/Assessment-Mbali/mytestcompany",
+    "scanner": "security-scan.py",
+    "security_gate": "FAIL"
+  },
+  "summary": {
+    "scanners": 6,
+    "passed": 2,
+    "failed": 4,
+    "findings": 16,
+    "severity": {
+      "CRITICAL": 6,
+      "HIGH": 4,
+      "MEDIUM": 6,
+      "LOW": 0,
+      "INFO": 0
+    }
+  },
+  "scanners": [
+    {
+      "name": "Checkov",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_seconds": 7.999935854000796,
+      "findings": [
+        {
+          "severity": "HIGH",
+          "title": "Checkov finding",
+          "rule_id": "",
+          "file": "",
+          "line": "",
+          "resource": "",
+          "module": "",
+          "message": "",
+          "impact": "",
+          "resolution": "",
+          "references": [],
+          "code": "",
+          "scanner": "Checkov",
+          "extra": {
+            "check_type": "terraform",
+            "results": {
+              "failed_checks": [
+                {
+                  "check_id": "CKV_TF_1",
+                  "bc_check_id": "BC_CROSS_1",
+                  "check_name": "Ensure Terraform module sources use a commit hash",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                  },
+                  "code_block": [
+                    [
+                      31,
+                      "module \"source_s3_bucket\" {\n"
+                    ],
+                    [
+                      32,
+                      "  source = \"terraform-aws-modules/s3-bucket/aws\"\n"
+                    ],
+                    [
+                      33,
+                      "\n"
+                    ],
+                    [
+                      34,
+                      "  bucket = local.source_bucket\n"
+                    ],
+                    [
+                      35,
+                      "  acl    = \"log-delivery-write\"\n"
+                    ],
+                    [
+                      36,
+                      "\n"
+                    ],
+                    [
+                      37,
+                      "  # Allow deletion of non-empty bucket\n"
+                    ],
+                    [
+                      38,
+                      "  force_destroy = true\n"
+                    ],
+                    [
+                      39,
+                      "\n"
+                    ],
+                    [
+                      40,
+                      "  control_object_ownership = true\n"
+                    ],
+                    [
+                      41,
+                      "  object_ownership         = \"ObjectWriter\"\n"
+                    ],
+                    [
+                      42,
+                      "\n"
+                    ],
+                    [
+                      43,
+                      "}\n"
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "file_line_range": [
+                    31,
+                    43
+                  ],
+                  "resource": "source_s3_bucket",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.module.generic.RevisionHash",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": null,
+                  "caller_file_line_range": null,
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "breadcrumbs": {
+                    "bucket": [
+                      {
+                        "type": "variable",
+                        "name": "source_bucket",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/variables.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "locals",
+                        "name": "source_bucket",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                        "module_connection": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "check_id": "CKV_TF_2",
+                  "bc_check_id": "BC_CROSS_2",
+                  "check_name": "Ensure Terraform module sources use a tag with a version number",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                  },
+                  "code_block": [
+                    [
+                      31,
+                      "module \"source_s3_bucket\" {\n"
+                    ],
+                    [
+                      32,
+                      "  source = \"terraform-aws-modules/s3-bucket/aws\"\n"
+                    ],
+                    [
+                      33,
+                      "\n"
+                    ],
+                    [
+                      34,
+                      "  bucket = local.source_bucket\n"
+                    ],
+                    [
+                      35,
+                      "  acl    = \"log-delivery-write\"\n"
+                    ],
+                    [
+                      36,
+                      "\n"
+                    ],
+                    [
+                      37,
+                      "  # Allow deletion of non-empty bucket\n"
+                    ],
+                    [
+                      38,
+                      "  force_destroy = true\n"
+                    ],
+                    [
+                      39,
+                      "\n"
+                    ],
+                    [
+                      40,
+                      "  control_object_ownership = true\n"
+                    ],
+                    [
+                      41,
+                      "  object_ownership         = \"ObjectWriter\"\n"
+                    ],
+                    [
+                      42,
+                      "\n"
+                    ],
+                    [
+                      43,
+                      "}\n"
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "file_line_range": [
+                    31,
+                    43
+                  ],
+                  "resource": "source_s3_bucket",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.module.generic.RevisionVersionTag",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": null,
+                  "caller_file_line_range": null,
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                  "breadcrumbs": {
+                    "bucket": [
+                      {
+                        "type": "variable",
+                        "name": "source_bucket",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/variables.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "locals",
+                        "name": "source_bucket",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/logging/main.tf",
+                        "module_connection": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "check_id": "CKV_TF_1",
+                  "bc_check_id": "BC_CROSS_1",
+                  "check_name": "Ensure Terraform module sources use a commit hash",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                  },
+                  "code_block": [
+                    [
+                      1,
+                      "module \"nat_gateway_alarms\" {\n"
+                    ],
+                    [
+                      2,
+                      "  for_each = var.nat_gateway_alarms\n"
+                    ],
+                    [
+                      3,
+                      "\n"
+                    ],
+                    [
+                      4,
+                      "  source  = \"terraform-aws-modules/cloudwatch/aws//modules/metric-alarm\"\n"
+                    ],
+                    [
+                      5,
+                      "  version = \"5.7.3\"\n"
+                    ],
+                    [
+                      6,
+                      "\n"
+                    ],
+                    [
+                      7,
+                      "  alarm_name          = each.value.alarm_name\n"
+                    ],
+                    [
+                      8,
+                      "  alarm_description   = each.value.alarm_description\n"
+                    ],
+                    [
+                      9,
+                      "  comparison_operator = each.value.comparison_operator\n"
+                    ],
+                    [
+                      10,
+                      "  evaluation_periods  = each.value.evaluation_periods\n"
+                    ],
+                    [
+                      11,
+                      "  period              = each.value.period\n"
+                    ],
+                    [
+                      12,
+                      "  threshold           = each.value.threshold\n"
+                    ],
+                    [
+                      13,
+                      "  statistic           = each.value.statistic\n"
+                    ],
+                    [
+                      14,
+                      "  namespace           = each.value.namespace\n"
+                    ],
+                    [
+                      15,
+                      "  metric_name         = each.value.metric_name\n"
+                    ],
+                    [
+                      16,
+                      "  dimensions          = each.value.dimensions\n"
+                    ],
+                    [
+                      17,
+                      "}  "
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/monitoring/main.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/monitoring/main.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/monitoring/main.tf",
+                  "file_line_range": [
+                    1,
+                    17
+                  ],
+                  "resource": "module.monitoring.nat_gateway_alarms",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.module.generic.RevisionHash",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": "/landing-zone-tiers/starter/aws/landing-zone.tf",
+                  "caller_file_line_range": [
+                    44,
+                    50
+                  ],
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/monitoring/main.tf",
+                  "breadcrumbs": {
+                    "for_each": [
+                      {
+                        "type": "module",
+                        "name": "monitoring",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "nat_gateway_alarms",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/monitoring/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "source_module_": [
+                      {
+                        "type": "module",
+                        "name": "monitoring",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "idx": 2,
+                        "source_module_object": null
+                      }
+                    ]
+                  }
+                },
+                {
+                  "check_id": "CKV_TF_1",
+                  "bc_check_id": "BC_CROSS_1",
+                  "check_name": "Ensure Terraform module sources use a commit hash",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                  },
+                  "code_block": [
+                    [
+                      1,
+                      "module \"vpc\" {\n"
+                    ],
+                    [
+                      2,
+                      "  source  = \"terraform-aws-modules/vpc/aws\"\n"
+                    ],
+                    [
+                      3,
+                      "  version = \"~> 6.0\"\n"
+                    ],
+                    [
+                      4,
+                      "\n"
+                    ],
+                    [
+                      5,
+                      "  name = var.vpc_configuration.name_prefix\n"
+                    ],
+                    [
+                      6,
+                      "  cidr = var.vpc_configuration.cidr_block\n"
+                    ],
+                    [
+                      7,
+                      "\n"
+                    ],
+                    [
+                      8,
+                      "  azs             = var.vpc_configuration.availability_zones\n"
+                    ],
+                    [
+                      9,
+                      "  private_subnets = var.vpc_configuration.private_subnet_cidrs\n"
+                    ],
+                    [
+                      10,
+                      "  public_subnets  = var.vpc_configuration.public_subnet_cidrs\n"
+                    ],
+                    [
+                      11,
+                      "\n"
+                    ],
+                    [
+                      12,
+                      "  enable_flow_log                      = var.vpc_configuration.enable_flow_log\n"
+                    ],
+                    [
+                      13,
+                      "  flow_log_destination_type            = var.vpc_configuration.flow_log_destination_type\n"
+                    ],
+                    [
+                      14,
+                      "  flow_log_file_format                 = var.vpc_configuration.flow_log_file_format\n"
+                    ],
+                    [
+                      15,
+                      "  create_flow_log_cloudwatch_log_group = var.vpc_configuration.create_flow_log_cloudwatch_log_group\n"
+                    ],
+                    [
+                      16,
+                      "  create_flow_log_cloudwatch_iam_role  = var.vpc_configuration.create_flow_log_cloudwatch_iam_role\n"
+                    ],
+                    [
+                      17,
+                      "\n"
+                    ],
+                    [
+                      18,
+                      "  enable_nat_gateway   = var.vpc_configuration.enable_nat_gateway\n"
+                    ],
+                    [
+                      19,
+                      "  single_nat_gateway   = var.vpc_configuration.single_nat_gateway\n"
+                    ],
+                    [
+                      20,
+                      "  enable_dns_hostnames = var.vpc_configuration.enable_dns_hostnames\n"
+                    ],
+                    [
+                      21,
+                      "  enable_dns_support   = var.vpc_configuration.enable_dns_support\n"
+                    ],
+                    [
+                      22,
+                      "\n"
+                    ],
+                    [
+                      23,
+                      "  tags = var.tags\n"
+                    ],
+                    [
+                      24,
+                      "}\n"
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/networking/vpc.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/vpc.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/vpc.tf",
+                  "file_line_range": [
+                    1,
+                    24
+                  ],
+                  "resource": "module.networking.vpc",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.module.generic.RevisionHash",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": "/landing-zone-tiers/starter/aws/landing-zone.tf",
+                  "caller_file_line_range": [
+                    1,
+                    25
+                  ],
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/vpc.tf",
+                  "breadcrumbs": {
+                    "public_subnets": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "enable_flow_log": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "tags": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "tags",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "azs": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "create_flow_log_cloudwatch_iam_role": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "enable_nat_gateway": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "single_nat_gateway": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "flow_log_destination_type": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "flow_log_file_format": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "enable_dns_hostnames": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "enable_dns_support": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "cidr": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "create_flow_log_cloudwatch_log_group": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "name": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "private_subnets": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "vpc_configuration",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/networking/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "source_module_": [
+                      {
+                        "type": "module",
+                        "name": "networking",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "idx": 1,
+                        "source_module_object": null
+                      }
+                    ]
+                  }
+                },
+                {
+                  "check_id": "CKV_TF_1",
+                  "bc_check_id": "BC_CROSS_1",
+                  "check_name": "Ensure Terraform module sources use a commit hash",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                  },
+                  "code_block": [
+                    [
+                      17,
+                      "module \"eventbridge\" {\n"
+                    ],
+                    [
+                      18,
+                      "  source = \"terraform-aws-modules/eventbridge/aws\"\n"
+                    ],
+                    [
+                      19,
+                      "\n"
+                    ],
+                    [
+                      20,
+                      "  tags     = var.tags\n"
+                    ],
+                    [
+                      21,
+                      "  bus_name = var.custom_actions_config.event_bus_name\n"
+                    ],
+                    [
+                      22,
+                      "\n"
+                    ],
+                    [
+                      23,
+                      "  rules = {\n"
+                    ],
+                    [
+                      24,
+                      "    security_hub_notify = {\n"
+                    ],
+                    [
+                      25,
+                      "      description = \"Send Security Hub custom action events to SNS\"\n"
+                    ],
+                    [
+                      26,
+                      "\n"
+                    ],
+                    [
+                      27,
+                      "      event_pattern = jsonencode({\n"
+                    ],
+                    [
+                      28,
+                      "        source = [\n"
+                    ],
+                    [
+                      29,
+                      "          \"aws.securityhub\"\n"
+                    ],
+                    [
+                      30,
+                      "        ]\n"
+                    ],
+                    [
+                      31,
+                      "\n"
+                    ],
+                    [
+                      32,
+                      "        detail-type = [\n"
+                    ],
+                    [
+                      33,
+                      "          \"Security Hub Findings - Custom Action\"\n"
+                    ],
+                    [
+                      34,
+                      "        ]\n"
+                    ],
+                    [
+                      35,
+                      "\n"
+                    ],
+                    [
+                      36,
+                      "        resources = [\n"
+                    ],
+                    [
+                      37,
+                      "          aws_securityhub_action_target.notify.arn\n"
+                    ],
+                    [
+                      38,
+                      "        ]\n"
+                    ],
+                    [
+                      39,
+                      "      })\n"
+                    ],
+                    [
+                      40,
+                      "    }\n"
+                    ],
+                    [
+                      41,
+                      "  }\n"
+                    ],
+                    [
+                      42,
+                      "\n"
+                    ],
+                    [
+                      43,
+                      "  targets = {\n"
+                    ],
+                    [
+                      44,
+                      "    security_hub_notify = [\n"
+                    ],
+                    [
+                      45,
+                      "      {\n"
+                    ],
+                    [
+                      46,
+                      "        name = \"send-security-finding-to-sns\"\n"
+                    ],
+                    [
+                      47,
+                      "        arn  = aws_sns_topic.security_alerts.arn\n"
+                    ],
+                    [
+                      48,
+                      "      }\n"
+                    ],
+                    [
+                      49,
+                      "    ]\n"
+                    ],
+                    [
+                      50,
+                      "  }\n"
+                    ],
+                    [
+                      51,
+                      "}"
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "file_line_range": [
+                    17,
+                    51
+                  ],
+                  "resource": "module.security.eventbridge",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.module.generic.RevisionHash",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": "/landing-zone-tiers/starter/aws/landing-zone.tf",
+                  "caller_file_line_range": [
+                    53,
+                    65
+                  ],
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "breadcrumbs": {
+                    "tags": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "tags",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "bus_name": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "custom_actions_config",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "source_module_": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "idx": 3,
+                        "source_module_object": null
+                      }
+                    ]
+                  }
+                },
+                {
+                  "check_id": "CKV_TF_2",
+                  "bc_check_id": "BC_CROSS_2",
+                  "check_name": "Ensure Terraform module sources use a tag with a version number",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": []
+                  },
+                  "code_block": [
+                    [
+                      17,
+                      "module \"eventbridge\" {\n"
+                    ],
+                    [
+                      18,
+                      "  source = \"terraform-aws-modules/eventbridge/aws\"\n"
+                    ],
+                    [
+                      19,
+                      "\n"
+                    ],
+                    [
+                      20,
+                      "  tags     = var.tags\n"
+                    ],
+                    [
+                      21,
+                      "  bus_name = var.custom_actions_config.event_bus_name\n"
+                    ],
+                    [
+                      22,
+                      "\n"
+                    ],
+                    [
+                      23,
+                      "  rules = {\n"
+                    ],
+                    [
+                      24,
+                      "    security_hub_notify = {\n"
+                    ],
+                    [
+                      25,
+                      "      description = \"Send Security Hub custom action events to SNS\"\n"
+                    ],
+                    [
+                      26,
+                      "\n"
+                    ],
+                    [
+                      27,
+                      "      event_pattern = jsonencode({\n"
+                    ],
+                    [
+                      28,
+                      "        source = [\n"
+                    ],
+                    [
+                      29,
+                      "          \"aws.securityhub\"\n"
+                    ],
+                    [
+                      30,
+                      "        ]\n"
+                    ],
+                    [
+                      31,
+                      "\n"
+                    ],
+                    [
+                      32,
+                      "        detail-type = [\n"
+                    ],
+                    [
+                      33,
+                      "          \"Security Hub Findings - Custom Action\"\n"
+                    ],
+                    [
+                      34,
+                      "        ]\n"
+                    ],
+                    [
+                      35,
+                      "\n"
+                    ],
+                    [
+                      36,
+                      "        resources = [\n"
+                    ],
+                    [
+                      37,
+                      "          aws_securityhub_action_target.notify.arn\n"
+                    ],
+                    [
+                      38,
+                      "        ]\n"
+                    ],
+                    [
+                      39,
+                      "      })\n"
+                    ],
+                    [
+                      40,
+                      "    }\n"
+                    ],
+                    [
+                      41,
+                      "  }\n"
+                    ],
+                    [
+                      42,
+                      "\n"
+                    ],
+                    [
+                      43,
+                      "  targets = {\n"
+                    ],
+                    [
+                      44,
+                      "    security_hub_notify = [\n"
+                    ],
+                    [
+                      45,
+                      "      {\n"
+                    ],
+                    [
+                      46,
+                      "        name = \"send-security-finding-to-sns\"\n"
+                    ],
+                    [
+                      47,
+                      "        arn  = aws_sns_topic.security_alerts.arn\n"
+                    ],
+                    [
+                      48,
+                      "      }\n"
+                    ],
+                    [
+                      49,
+                      "    ]\n"
+                    ],
+                    [
+                      50,
+                      "  }\n"
+                    ],
+                    [
+                      51,
+                      "}"
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "file_line_range": [
+                    17,
+                    51
+                  ],
+                  "resource": "module.security.eventbridge",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.module.generic.RevisionVersionTag",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": "/landing-zone-tiers/starter/aws/landing-zone.tf",
+                  "caller_file_line_range": [
+                    53,
+                    65
+                  ],
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "breadcrumbs": {
+                    "tags": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "tags",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "bus_name": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "custom_actions_config",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "source_module_": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "idx": 3,
+                        "source_module_object": null
+                      }
+                    ]
+                  }
+                },
+                {
+                  "check_id": "CKV_AWS_26",
+                  "bc_check_id": "BC_AWS_GENERAL_15",
+                  "check_name": "Ensure all data stored in the SNS topic is encrypted",
+                  "check_result": {
+                    "result": "FAILED",
+                    "evaluated_keys": [
+                      "kms_master_key_id"
+                    ]
+                  },
+                  "code_block": [
+                    [
+                      7,
+                      "resource \"aws_sns_topic\" \"security_alerts\" {\n"
+                    ],
+                    [
+                      8,
+                      "  name = var.custom_actions_config.sns_topic_name\n"
+                    ],
+                    [
+                      9,
+                      "}\n"
+                    ]
+                  ],
+                  "file_path": "/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "file_abs_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "repo_file_path": "/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "file_line_range": [
+                    7,
+                    9
+                  ],
+                  "resource": "module.security.aws_sns_topic.security_alerts",
+                  "evaluations": null,
+                  "check_class": "checkov.terraform.checks.resource.aws.SNSTopicEncryption",
+                  "fixed_definition": null,
+                  "entity_tags": null,
+                  "caller_file_path": "/landing-zone-tiers/starter/aws/landing-zone.tf",
+                  "caller_file_line_range": [
+                    53,
+                    65
+                  ],
+                  "resource_address": null,
+                  "severity": null,
+                  "bc_category": null,
+                  "benchmarks": null,
+                  "description": null,
+                  "short_description": null,
+                  "vulnerability_details": null,
+                  "connected_node": null,
+                  "guideline": "https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-15",
+                  "details": [],
+                  "check_len": null,
+                  "definition_context_file_path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/main.tf",
+                  "breadcrumbs": {
+                    "name": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "module_connection": false
+                      },
+                      {
+                        "type": "variable",
+                        "name": "custom_actions_config",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/modules/security/variables.tf",
+                        "module_connection": false
+                      }
+                    ],
+                    "source_module_": [
+                      {
+                        "type": "module",
+                        "name": "security",
+                        "path": "/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/landing-zone.tf",
+                        "idx": 3,
+                        "source_module_object": null
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "summary": {
+              "passed": 15,
+              "failed": 7,
+              "skipped": 0,
+              "parsing_errors": 1,
+              "resource_count": 9,
+              "checkov_version": "3.3.1"
+            }
+          }
+        },
+        {
+          "severity": "HIGH",
+          "title": "Checkov finding",
+          "rule_id": "",
+          "file": "",
+          "line": "",
+          "resource": "",
+          "module": "",
+          "message": "",
+          "impact": "",
+          "resolution": "",
+          "references": [],
+          "code": "",
+          "scanner": "Checkov",
+          "extra": {
+            "check_type": "github_actions",
+            "results": {
+              "failed_checks": []
+            },
+            "summary": {
+              "passed": 32,
+              "failed": 0,
+              "skipped": 0,
+              "parsing_errors": 0,
+              "resource_count": 0,
+              "checkov_version": "3.3.1"
+            }
+          }
+        }
+      ],
+      "raw_output": "terraform scan results:\n\nPassed checks: 15, Failed checks: 7, Skipped checks: 0, Parsing errors: 1\n\nCheck: CKV_TF_1: \"Ensure Terraform module sources use a commit hash\"\n\tFAILED for resource: source_s3_bucket\n\tFile: /landing-zone-tiers/starter/aws/modules/logging/main.tf:31-43\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision\n\n\t\t31 | module \"source_s3_bucket\" {\n\t\t32 |   source = \"terraform-aws-modules/s3-bucket/aws\"\n\t\t33 | \n\t\t34 |   bucket = local.source_bucket\n\t\t35 |   acl    = \"log-delivery-write\"\n\t\t36 | \n\t\t37 |   # Allow deletion of non-empty bucket\n\t\t38 |   force_destroy = true\n\t\t39 | \n\t\t40 |   control_object_ownership = true\n\t\t41 |   object_ownership         = \"ObjectWriter\"\n\t\t42 | \n\t\t43 | }\n\nCheck: CKV_TF_2: \"Ensure Terraform module sources use a tag with a version number\"\n\tFAILED for resource: source_s3_bucket\n\tFile: /landing-zone-tiers/starter/aws/modules/logging/main.tf:31-43\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag\n\n\t\t31 | module \"source_s3_bucket\" {\n\t\t32 |   source = \"terraform-aws-modules/s3-bucket/aws\"\n\t\t33 | \n\t\t34 |   bucket = local.source_bucket\n\t\t35 |   acl    = \"log-delivery-write\"\n\t\t36 | \n\t\t37 |   # Allow deletion of non-empty bucket\n\t\t38 |   force_destroy = true\n\t\t39 | \n\t\t40 |   control_object_ownership = true\n\t\t41 |   object_ownership         = \"ObjectWriter\"\n\t\t42 | \n\t\t43 | }\n\nCheck: CKV_TF_1: \"Ensure Terraform module sources use a commit hash\"\n\tFAILED for resource: module.monitoring.nat_gateway_alarms\n\tFile: /landing-zone-tiers/starter/aws/modules/monitoring/main.tf:1-17\n\tCalling File: /landing-zone-tiers/starter/aws/landing-zone.tf:44-50\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision\n\n\t\t1  | module \"nat_gateway_alarms\" {\n\t\t2  |   for_each = var.nat_gateway_alarms\n\t\t3  | \n\t\t4  |   source  = \"terraform-aws-modules/cloudwatch/aws//modules/metric-alarm\"\n\t\t5  |   version = \"5.7.3\"\n\t\t6  | \n\t\t7  |   alarm_name          = each.value.alarm_name\n\t\t8  |   alarm_description   = each.value.alarm_description\n\t\t9  |   comparison_operator = each.value.comparison_operator\n\t\t10 |   evaluation_periods  = each.value.evaluation_periods\n\t\t11 |   period              = each.value.period\n\t\t12 |   threshold           = each.value.threshold\n\t\t13 |   statistic           = each.value.statistic\n\t\t14 |   namespace           = each.value.namespace\n\t\t15 |   metric_name         = each.value.metric_name\n\t\t16 |   dimensions          = each.value.dimensions\n\t\t17 | }  \nCheck: CKV_TF_1: \"Ensure Terraform module sources use a commit hash\"\n\tFAILED for resource: module.networking.vpc\n\tFile: /landing-zone-tiers/starter/aws/modules/networking/vpc.tf:1-24\n\tCalling File: /landing-zone-tiers/starter/aws/landing-zone.tf:1-25\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision\n\n\t\t1  | module \"vpc\" {\n\t\t2  |   source  = \"terraform-aws-modules/vpc/aws\"\n\t\t3  |   version = \"~> 6.0\"\n\t\t4  | \n\t\t5  |   name = var.vpc_configuration.name_prefix\n\t\t6  |   cidr = var.vpc_configuration.cidr_block\n\t\t7  | \n\t\t8  |   azs             = var.vpc_configuration.availability_zones\n\t\t9  |   private_subnets = var.vpc_configuration.private_subnet_cidrs\n\t\t10 |   public_subnets  = var.vpc_configuration.public_subnet_cidrs\n\t\t11 | \n\t\t12 |   enable_flow_log                      = var.vpc_configuration.enable_flow_log\n\t\t13 |   flow_log_destination_type            = var.vpc_configuration.flow_log_destination_type\n\t\t14 |   flow_log_file_format                 = var.vpc_configuration.flow_log_file_format\n\t\t15 |   create_flow_log_cloudwatch_log_group = var.vpc_configuration.create_flow_log_cloudwatch_log_group\n\t\t16 |   create_flow_log_cloudwatch_iam_role  = var.vpc_configuration.create_flow_log_cloudwatch_iam_role\n\t\t17 | \n\t\t18 |   enable_nat_gateway   = var.vpc_configuration.enable_nat_gateway\n\t\t19 |   single_nat_gateway   = var.vpc_configuration.single_nat_gateway\n\t\t20 |   enable_dns_hostnames = var.vpc_configuration.enable_dns_hostnames\n\t\t21 |   enable_dns_support   = var.vpc_configuration.enable_dns_support\n\t\t22 | \n\t\t23 |   tags = var.tags\n\t\t24 | }\n\nCheck: CKV_AWS_26: \"Ensure all data stored in the SNS topic is encrypted\"\n\tFAILED for resource: module.security.aws_sns_topic.security_alerts\n\tFile: /landing-zone-tiers/starter/aws/modules/security/main.tf:7-9\n\tCalling File: /landing-zone-tiers/starter/aws/landing-zone.tf:53-65\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-15\n\n\t\t7 | resource \"aws_sns_topic\" \"security_alerts\" {\n\t\t8 |   name = var.custom_actions_config.sns_topic_name\n\t\t9 | }\n\nCheck: CKV_TF_1: \"Ensure Terraform module sources use a commit hash\"\n\tFAILED for resource: module.security.eventbridge\n\tFile: /landing-zone-tiers/starter/aws/modules/security/main.tf:17-51\n\tCalling File: /landing-zone-tiers/starter/aws/landing-zone.tf:53-65\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-git-url-with-commit-hash-revision\n\n\t\t17 | module \"eventbridge\" {\n\t\t18 |   source = \"terraform-aws-modules/eventbridge/aws\"\n\t\t19 | \n\t\t20 |   tags     = var.tags\n\t\t21 |   bus_name = var.custom_actions_config.event_bus_name\n\t\t22 | \n\t\t23 |   rules = {\n\t\t24 |     security_hub_notify = {\n\t\t25 |       description = \"Send Security Hub custom action events to SNS\"\n\t\t26 | \n\t\t27 |       event_pattern = jsonencode({\n\t\t28 |         source = [\n\t\t29 |           \"aws.securityhub\"\n\t\t30 |         ]\n\t\t31 | \n\t\t32 |         detail-type = [\n\t\t33 |           \"Security Hub Findings - Custom Action\"\n\t\t34 |         ]\n\t\t35 | \n\t\t36 |         resources = [\n\t\t37 |           aws_securityhub_action_target.notify.arn\n\t\t38 |         ]\n\t\t39 |       })\n\t\t40 |     }\n\t\t41 |   }\n\t\t42 | \n\t\t43 |   targets = {\n\t\t44 |     security_hub_notify = [\n\t\t45 |       {\n\t\t46 |         name = \"send-security-finding-to-sns\"\n\t\t47 |         arn  = aws_sns_topic.security_alerts.arn\n\t\t48 |       }\n\t\t49 |     ]\n\t\t50 |   }\n\t\t51 | }\nCheck: CKV_TF_2: \"Ensure Terraform module sources use a tag with a version number\"\n\tFAILED for resource: module.security.eventbridge\n\tFile: /landing-zone-tiers/starter/aws/modules/security/main.tf:17-51\n\tCalling File: /landing-zone-tiers/starter/aws/landing-zone.tf:53-65\n\tGuide: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/supply-chain-policies/terraform-policies/ensure-terraform-module-sources-use-tag\n\n\t\t17 | module \"eventbridge\" {\n\t\t18 |   source = \"terraform-aws-modules/eventbridge/aws\"\n\t\t19 | \n\t\t20 |   tags     = var.tags\n\t\t21 |   bus_name = var.custom_actions_config.event_bus_name\n\t\t22 | \n\t\t23 |   rules = {\n\t\t24 |     security_hub_notify = {\n\t\t25 |       description = \"Send Security Hub custom action events to SNS\"\n\t\t26 | \n\t\t27 |       event_pattern = jsonencode({\n\t\t28 |         source = [\n\t\t29 |           \"aws.securityhub\"\n\t\t30 |         ]\n\t\t31 | \n\t\t32 |         detail-type = [\n\t\t33 |           \"Security Hub Findings - Custom Action\"\n\t\t34 |         ]\n\t\t35 | \n\t\t36 |         resources = [\n\t\t37 |           aws_securityhub_action_target.notify.arn\n\t\t38 |         ]\n\t\t39 |       })\n\t\t40 |     }\n\t\t41 |   }\n\t\t42 | \n\t\t43 |   targets = {\n\t\t44 |     security_hub_notify = [\n\t\t45 |       {\n\t\t46 |         name = \"send-security-finding-to-sns\"\n\t\t47 |         arn  = aws_sns_topic.security_alerts.arn\n\t\t48 |       }\n\t\t49 |     ]\n\t\t50 |   }\n\t\t51 | }\ngithub_actions scan results:\n\nPassed checks: 32, Failed checks: 0, Skipped checks: 0\n\n\n",
+      "raw_error": "2026-10-06 13:13:51,317 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/security-group/aws:~> 6.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,317 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/s3-bucket/aws:~> 5.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,317 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/cloudwatch/aws//modules/log-group:~> 5.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/iam/aws//modules/iam-role:~> 6.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/lambda/aws:~> 8.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/step-functions/aws:~> 5.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/ecs/aws:~> 6.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/sns/aws:~> 6.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/iam/aws//modules/iam-assumable-role:~> 5.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/iam/aws//modules/iam-policy:~> 5.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,318 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/kms/aws:~> 2.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/apigateway-v2/aws:~> 4.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/iam/aws//modules/iam-assumable-role:~> 4.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/iam/aws//modules/iam-policy:~> 4.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/kms/aws:~> 4.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Unable to load module (terraform-aws-modules/eventbridge/aws): list index out of range\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/cloudwatch/aws//modules/metric-alarm:5.7.3 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Failed to download module terraform-aws-modules/vpc/aws:~> 6.0 (for external modules, the --download-external-modules flag is required)\n2026-10-06 13:13:51,319 [MainThread  ] [WARNI]  Unable to load module (terraform-aws-modules/s3-bucket/aws): list index out of range\n",
+      "version": "3.3.1",
+      "error": "",
+      "stats": {},
+      "severity_counts": {
+        "CRITICAL": 0,
+        "HIGH": 2,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 0
+      }
+    },
+    {
+      "name": "tfsec",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_seconds": 0.8263913759983552,
+      "findings": [
+        {
+          "severity": "CRITICAL",
+          "title": "Network ACL rule allows access using ALL ports.",
+          "rule_id": "AVD-AWS-0102",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "411",
+          "resource": "module.networking",
+          "module": "",
+          "message": "Network ACL rule allows access using ALL ports.",
+          "impact": "All ports exposed for ingressing/egressing data",
+          "resolution": "Set specific allowed ports",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "An Network ACL rule allows ALL ports.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "CRITICAL",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "CRITICAL",
+          "title": "Network ACL rule allows access using ALL ports.",
+          "rule_id": "AVD-AWS-0102",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "392",
+          "resource": "module.networking",
+          "module": "",
+          "message": "Network ACL rule allows access using ALL ports.",
+          "impact": "All ports exposed for ingressing/egressing data",
+          "resolution": "Set specific allowed ports",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "An Network ACL rule allows ALL ports.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "CRITICAL",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "CRITICAL",
+          "title": "Network ACL rule allows access using ALL ports.",
+          "rule_id": "AVD-AWS-0102",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "280",
+          "resource": "module.networking",
+          "module": "",
+          "message": "Network ACL rule allows access using ALL ports.",
+          "impact": "All ports exposed for ingressing/egressing data",
+          "resolution": "Set specific allowed ports",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "An Network ACL rule allows ALL ports.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "CRITICAL",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "CRITICAL",
+          "title": "Network ACL rule allows access using ALL ports.",
+          "rule_id": "AVD-AWS-0102",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "261",
+          "resource": "module.networking",
+          "module": "",
+          "message": "Network ACL rule allows access using ALL ports.",
+          "impact": "All ports exposed for ingressing/egressing data",
+          "resolution": "Set specific allowed ports",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "An Network ACL rule allows ALL ports.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "CRITICAL",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "CRITICAL",
+          "title": "Network ACL rule allows ingress from public internet.",
+          "rule_id": "AVD-AWS-0105",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "393",
+          "resource": "module.networking",
+          "module": "",
+          "message": "Network ACL rule allows ingress from public internet.",
+          "impact": "The ports are exposed for ingressing data to the internet",
+          "resolution": "Set a more restrictive cidr range",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-acl/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#cidr_block"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "An ingress Network ACL rule allows specific ports from /0.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "CRITICAL",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "CRITICAL",
+          "title": "Network ACL rule allows ingress from public internet.",
+          "rule_id": "AVD-AWS-0105",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "262",
+          "resource": "module.networking",
+          "module": "",
+          "message": "Network ACL rule allows ingress from public internet.",
+          "impact": "The ports are exposed for ingressing data to the internet",
+          "resolution": "Set a more restrictive cidr range",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-acl/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#cidr_block"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "An ingress Network ACL rule allows specific ports from /0.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "CRITICAL",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "MEDIUM",
+          "title": "VPC Flow Logs is not enabled for VPC ",
+          "rule_id": "AVD-AWS-0178",
+          "file": "terraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "28-53",
+          "resource": "module.networking",
+          "module": "",
+          "message": "VPC Flow Logs is not enabled for VPC ",
+          "impact": "Without VPC flow logs, you risk not having enough information about network traffic flow to investigate incidents or identify security issues.",
+          "resolution": "Enable flow logs for VPC",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/require-vpc-flow-logs-for-all-vpcs/"
+          ],
+          "code": "",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "VPC Flow Logs is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC. After you've created a flow log, you can view and retrieve its data in Amazon CloudWatch Logs. It is recommended that VPC Flow Logs be enabled for packet \"Rejects\" for VPCs.",
+            "rule_provider": "aws",
+            "rule_service": "ec2",
+            "severity": "MEDIUM",
+            "warning": false,
+            "status": 0
+          }
+        },
+        {
+          "severity": "HIGH",
+          "title": "Topic does not have encryption enabled.",
+          "rule_id": "AVD-AWS-0095",
+          "file": "landing-zone-tiers/starter/aws/modules/security/main.tf",
+          "line": "7-9",
+          "resource": "module.security",
+          "module": "",
+          "message": "Topic does not have encryption enabled.",
+          "impact": "The SNS topic messages could be read if compromised",
+          "resolution": "Turn on SNS Topic encryption",
+          "references": [
+            "https://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/sns/enable-topic-encryption/",
+            "https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#example-with-server-side-encryption-sse"
+          ],
+          "code": "    5: }\n    6: \n    7: resource \"aws_sns_topic\" \"security_alerts\" {\n    8:   name = var.custom_actions_config.sns_topic_name\n    9: }",
+          "scanner": "tfsec",
+          "extra": {
+            "rule_description": "Unencrypted SNS topic.",
+            "rule_provider": "aws",
+            "rule_service": "sns",
+            "severity": "HIGH",
+            "warning": false,
+            "status": 0
+          }
+        }
+      ],
+      "raw_output": "\n\u001b[0m\u001b[3mResult #1\u001b[0m \u001b[0m\u001b[1m\u001b[31mCRITICAL\u001b[39m\u001b[0m\u001b[39m\u001b[0m \u001b[1mNetwork ACL rule allows access using ALL ports.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:261\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[90m  247  \u001b[0m\u001b[0m  \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_network_acl_rule\"\u001b[0m \u001b[38;5;37m\"public_inbound\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[31m  261  \u001b[0m\u001b[0m\u001b[31m[\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mprotocol\u001b[0m        = \u001b[38;5;33mvar\u001b[0m.public_inbound_acl_rules[\u001b[38;5;33mcount\u001b[0m.index][\u001b[38;5;37m\"protocol\"\u001b[0m]\u001b[0m\u001b[0m \u001b[3m\u001b[2m\u001b[3m(\"-1\")\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[90m  264  \u001b[0m\u001b[0m  }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-no-excessive-port-access\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m All ports exposed for ingressing/egressing data\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Set specific allowed ports\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #2\u001b[0m \u001b[0m\u001b[1m\u001b[31mCRITICAL\u001b[39m\u001b[0m\u001b[39m\u001b[0m \u001b[1mNetwork ACL rule allows ingress from public internet.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:262\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[90m  247  \u001b[0m\u001b[0m  \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_network_acl_rule\"\u001b[0m \u001b[38;5;37m\"public_inbound\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[31m  262  \u001b[0m\u001b[0m\u001b[31m[\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mcidr_block\u001b[0m      =\u001b[38;5;33m lookup\u001b[0m(\u001b[38;5;33mvar\u001b[0m.public_inbound_acl_rules[\u001b[38;5;33mcount\u001b[0m.index], \u001b[38;5;37m\"cidr_block\"\u001b[0m, null)\u001b[0m\u001b[0m \u001b[3m\u001b[2m\u001b[3m(\"0.0.0.0/0\")\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[90m  264  \u001b[0m\u001b[0m  }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-no-public-ingress-acl\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m The ports are exposed for ingressing data to the internet\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Set a more restrictive cidr range\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-acl/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#cidr_block\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #3\u001b[0m \u001b[0m\u001b[1m\u001b[31mCRITICAL\u001b[39m\u001b[0m\u001b[39m\u001b[0m \u001b[1mNetwork ACL rule allows access using ALL ports.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:280\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[90m  266  \u001b[0m\u001b[0m  \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_network_acl_rule\"\u001b[0m \u001b[38;5;37m\"public_outbound\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[31m  280  \u001b[0m\u001b[0m\u001b[31m[\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mprotocol\u001b[0m        = \u001b[38;5;33mvar\u001b[0m.public_outbound_acl_rules[\u001b[38;5;33mcount\u001b[0m.index][\u001b[38;5;37m\"protocol\"\u001b[0m]\u001b[0m\u001b[0m \u001b[3m\u001b[2m\u001b[3m(\"-1\")\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[90m  283  \u001b[0m\u001b[0m  }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-no-excessive-port-access\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m All ports exposed for ingressing/egressing data\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Set specific allowed ports\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #4\u001b[0m \u001b[0m\u001b[1m\u001b[31mCRITICAL\u001b[39m\u001b[0m\u001b[39m\u001b[0m \u001b[1mNetwork ACL rule allows access using ALL ports.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:392\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[90m  378  \u001b[0m\u001b[0m  \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_network_acl_rule\"\u001b[0m \u001b[38;5;37m\"private_inbound\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[31m  392  \u001b[0m\u001b[0m\u001b[31m[\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mprotocol\u001b[0m        = \u001b[38;5;33mvar\u001b[0m.private_inbound_acl_rules[\u001b[38;5;33mcount\u001b[0m.index][\u001b[38;5;37m\"protocol\"\u001b[0m]\u001b[0m\u001b[0m \u001b[3m\u001b[2m\u001b[3m(\"-1\")\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[90m  395  \u001b[0m\u001b[0m  }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-no-excessive-port-access\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m All ports exposed for ingressing/egressing data\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Set specific allowed ports\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #5\u001b[0m \u001b[0m\u001b[1m\u001b[31mCRITICAL\u001b[39m\u001b[0m\u001b[39m\u001b[0m \u001b[1mNetwork ACL rule allows ingress from public internet.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:393\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[90m  378  \u001b[0m\u001b[0m  \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_network_acl_rule\"\u001b[0m \u001b[38;5;37m\"private_inbound\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[31m  393  \u001b[0m\u001b[0m\u001b[31m[\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mcidr_block\u001b[0m      =\u001b[38;5;33m lookup\u001b[0m(\u001b[38;5;33mvar\u001b[0m.private_inbound_acl_rules[\u001b[38;5;33mcount\u001b[0m.index], \u001b[38;5;37m\"cidr_block\"\u001b[0m, null)\u001b[0m\u001b[0m \u001b[3m\u001b[2m\u001b[3m(\"0.0.0.0/0\")\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[90m  395  \u001b[0m\u001b[0m  }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-no-public-ingress-acl\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m The ports are exposed for ingressing data to the internet\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Set a more restrictive cidr range\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-public-ingress-acl/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#cidr_block\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #6\u001b[0m \u001b[0m\u001b[1m\u001b[31mCRITICAL\u001b[39m\u001b[0m\u001b[39m\u001b[0m \u001b[1mNetwork ACL rule allows access using ALL ports.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:411\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[90m  397  \u001b[0m\u001b[0m  \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_network_acl_rule\"\u001b[0m \u001b[38;5;37m\"private_outbound\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[31m  411  \u001b[0m\u001b[0m\u001b[31m[\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mprotocol\u001b[0m        = \u001b[38;5;33mvar\u001b[0m.private_outbound_acl_rules[\u001b[38;5;33mcount\u001b[0m.index][\u001b[38;5;37m\"protocol\"\u001b[0m]\u001b[0m\u001b[0m \u001b[3m\u001b[2m\u001b[3m(\"-1\")\u001b[0m\n\u001b[0m\u001b[90m  ...  \u001b[0m\n\u001b[0m\u001b[90m  414  \u001b[0m\u001b[0m  }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-no-excessive-port-access\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m All ports exposed for ingressing/egressing data\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Set specific allowed ports\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/no-excessive-port-access/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_acl_rule#to_port\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #7\u001b[0m \u001b[0m\u001b[31mHIGH\u001b[39m\u001b[0m \u001b[1mTopic does not have encryption enabled.\u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mlanding-zone-tiers/starter/aws/modules/security/main.tf\u001b[2m\u001b[3m:7-9\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:53-65 (module.security)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[31m    7  \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_sns_topic\"\u001b[0m \u001b[38;5;37m\"security_alerts\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[31m    8  \u001b[0m\u001b[0m \u001b[0m\u001b[0m   \u001b[38;5;245mname\u001b[0m = \u001b[38;5;33mvar\u001b[0m.custom_actions_config.sns_topic_name\u001b[0m\n\u001b[0m\u001b[31m    9  \u001b[0m\u001b[0m \u001b[0m\u001b[0m }\u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-sns-enable-topic-encryption\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m The SNS topic messages could be read if compromised\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Turn on SNS Topic encryption\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/sns/enable-topic-encryption/\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic#example-with-server-side-encryption-sse\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m\u001b[3mResult #8\u001b[0m \u001b[0m\u001b[33mMEDIUM\u001b[39m\u001b[0m \u001b[1mVPC Flow Logs is not enabled for VPC \u001b[0m \u001b[2m\u001b[0m\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[3mterraform-aws-modules/vpc/aws/home/que/Assessment-Mbali/mytestcompany/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf\u001b[2m\u001b[3m:28-53\n\u001b[0m\u001b[0m   \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/modules/networking/vpc.tf\u001b[2m\u001b[3m:1-24 (module.vpc)\n\u001b[0m\u001b[0m    \u001b[2mvia \u001b[0m\u001b[3mlanding-zone-tiers/starter/aws/landing-zone.tf\u001b[2m\u001b[3m:1-25 (module.networking)\n\u001b[0m\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m\u001b[31m   28  \u001b[0m\u001b[0m\u001b[31m\u250c\u001b[39m\u001b[0m\u001b[0m \u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_vpc\"\u001b[0m \u001b[38;5;37m\"this\"\u001b[0m {\u001b[0m\n\u001b[0m\u001b[31m   29  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mcount\u001b[0m = local.create_vpc \u001b[38;5;245m?\u001b[0m \u001b[38;5;37m1\u001b[0m \u001b[38;5;245m:\u001b[0m \u001b[38;5;37m0\u001b[0m\n\u001b[0m\u001b[31m   30  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m \u001b[0m\u001b[0m\n\u001b[0m\u001b[31m   31  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mregion\u001b[0m = \u001b[38;5;33mvar\u001b[0m.region\u001b[0m\n\u001b[0m\u001b[31m   32  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m \u001b[0m\n\u001b[0m\u001b[31m   33  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mcidr_block\u001b[0m          = \u001b[38;5;33mvar\u001b[0m.use_ipam_pool \u001b[38;5;245m?\u001b[0m null \u001b[38;5;245m:\u001b[0m \u001b[38;5;33mvar\u001b[0m.cidr\u001b[0m\n\u001b[0m\u001b[31m   34  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mipv4_ipam_pool_id\u001b[0m   = \u001b[38;5;33mvar\u001b[0m.ipv4_ipam_pool_id\u001b[0m\n\u001b[0m\u001b[31m   35  \u001b[0m\u001b[0m\u001b[31m\u2502\u001b[39m\u001b[0m\u001b[0m   \u001b[38;5;245mipv4_netmask_length\u001b[0m = \u001b[38;5;33mvar\u001b[0m.ipv4_netmask_length\u001b[0m\n\u001b[0m\u001b[31m   36  \u001b[0m\u001b[0m\u001b[31m\u2514\u001b[39m\u001b[0m\u001b[0m \u001b[0m\n\u001b[0m\u001b[90m   ..  \u001b[0m\n\u001b[0m\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\u001b[0m\u001b[0m  \u001b[2m        ID\u001b[0m\u001b[3m aws-ec2-require-vpc-flow-logs-for-all-vpcs\n\u001b[0m\u001b[0m  \u001b[2m    Impact\u001b[0m Without VPC flow logs, you risk not having enough information about network traffic flow to investigate incidents or identify security issues.\n\u001b[0m\u001b[0m  \u001b[2mResolution\u001b[0m Enable flow logs for VPC\n\u001b[0m\u001b[0m\n  \u001b[2mMore Information\u001b[0m\u001b[0m\u001b[0m\n  \u001b[2m-\u001b[0m \u001b[34mhttps://aquasecurity.github.io/tfsec/v1.28.14/checks/aws/ec2/require-vpc-flow-logs-for-all-vpcs/\u001b[0m\u001b[0m\n\u001b[90m\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u001b[39m\n\n\n\u001b[0m\u001b[0m  \u001b[1mtimings\u001b[0m\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[2mdisk i/o            \u001b[0m 531.081\u00b5s\n\u001b[0m\u001b[0m  \u001b[2mparsing             \u001b[0m 505.705163ms\n\u001b[0m\u001b[0m  \u001b[2madaptation          \u001b[0m 4.358364ms\n\u001b[0m\u001b[0m  \u001b[2mchecks              \u001b[0m 6.183467ms\n\u001b[0m\u001b[0m  \u001b[2mtotal               \u001b[0m 516.778075ms\n\u001b[0m\n\u001b[0m  \u001b[1mcounts\u001b[0m\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[2mmodules downloaded  \u001b[0m 0\n\u001b[0m\u001b[0m  \u001b[2mmodules processed   \u001b[0m 6\n\u001b[0m\u001b[0m  \u001b[2mblocks processed    \u001b[0m 666\n\u001b[0m\u001b[0m  \u001b[2mfiles read          \u001b[0m 27\n\u001b[0m\n\u001b[0m  \u001b[1mresults\u001b[0m\n  \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\u001b[0m\u001b[0m  \u001b[2mpassed              \u001b[0m 4\n\u001b[0m\u001b[0m  \u001b[2mignored             \u001b[0m 0\n\u001b[0m\u001b[0m  \u001b[2mcritical            \u001b[0m 6\n\u001b[0m\u001b[0m  \u001b[2mhigh                \u001b[0m 1\n\u001b[0m\u001b[0m  \u001b[2mmedium              \u001b[0m 1\n\u001b[0m\u001b[0m  \u001b[2mlow                 \u001b[0m 0\n\u001b[0m\n\u001b[0m  \u001b[31m\u001b[1m4 passed, 8 potential problem(s) detected.\n\n\u001b[0m",
+      "raw_error": "\n======================================================\ntfsec is joining the Trivy family\n\ntfsec will continue to remain available \nfor the time being, although our engineering \nattention will be directed at Trivy going forward.\n\nYou can read more here: \nhttps://github.com/aquasecurity/tfsec/discussions/1994\n======================================================\n",
+      "version": "v1.28.14",
+      "error": "",
+      "stats": {},
+      "severity_counts": {
+        "CRITICAL": 6,
+        "HIGH": 1,
+        "MEDIUM": 1,
+        "LOW": 0,
+        "INFO": 0
+      }
+    },
+    {
+      "name": "TFLint",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 0.03899228100090113,
+      "findings": [],
+      "raw_output": "",
+      "raw_error": "",
+      "version": "TFLint version 0.64.0",
+      "error": "",
+      "stats": {},
+      "severity_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 0
+      }
+    },
+    {
+      "name": "Semgrep",
+      "status": "FAIL",
+      "exit_code": 0,
+      "duration_seconds": 5.391898182000659,
+      "findings": [
+        {
+          "severity": "MEDIUM",
+          "title": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.",
+          "rule_id": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+          "file": ".github/workflows/pipeline.github-actions.yml",
+          "line": "18",
+          "resource": [
+            "github-actions"
+          ],
+          "module": "",
+          "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.",
+          "impact": "HIGH",
+          "resolution": "",
+          "references": [
+            "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions"
+          ],
+          "code": "requires login",
+          "scanner": "Semgrep",
+          "extra": {
+            "metadata": {
+              "category": "security",
+              "cwe": [
+                "CWE-1357: Reliance on Insufficiently Trustworthy Component",
+                "CWE-353: Missing Support for Integrity Check"
+              ],
+              "owasp": [
+                "A08:2021 - Software and Data Integrity Failures",
+                "A08:2025 - Software and Data Integrity Failures"
+              ],
+              "references": [
+                "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions"
+              ],
+              "technology": [
+                "github-actions"
+              ],
+              "subcategory": [
+                "vuln"
+              ],
+              "likelihood": "MEDIUM",
+              "impact": "HIGH",
+              "confidence": "HIGH",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "vulnerability_class": [
+                "Cryptographic Issues",
+                "Other"
+              ],
+              "source": "https://semgrep.dev/r/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+              "shortlink": "https://sg.run/2LgAL"
+            }
+          }
+        },
+        {
+          "severity": "MEDIUM",
+          "title": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.",
+          "rule_id": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+          "file": ".github/workflows/pipeline.github-actions.yml",
+          "line": "21",
+          "resource": [
+            "github-actions"
+          ],
+          "module": "",
+          "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.",
+          "impact": "HIGH",
+          "resolution": "",
+          "references": [
+            "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions"
+          ],
+          "code": "requires login",
+          "scanner": "Semgrep",
+          "extra": {
+            "metadata": {
+              "category": "security",
+              "cwe": [
+                "CWE-1357: Reliance on Insufficiently Trustworthy Component",
+                "CWE-353: Missing Support for Integrity Check"
+              ],
+              "owasp": [
+                "A08:2021 - Software and Data Integrity Failures",
+                "A08:2025 - Software and Data Integrity Failures"
+              ],
+              "references": [
+                "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions"
+              ],
+              "technology": [
+                "github-actions"
+              ],
+              "subcategory": [
+                "vuln"
+              ],
+              "likelihood": "MEDIUM",
+              "impact": "HIGH",
+              "confidence": "HIGH",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "vulnerability_class": [
+                "Cryptographic Issues",
+                "Other"
+              ],
+              "source": "https://semgrep.dev/r/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+              "shortlink": "https://sg.run/2LgAL"
+            }
+          }
+        },
+        {
+          "severity": "MEDIUM",
+          "title": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.",
+          "rule_id": "yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+          "file": ".github/workflows/pipeline.github-actions.yml",
+          "line": "27",
+          "resource": [
+            "github-actions"
+          ],
+          "module": "",
+          "message": "GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.",
+          "impact": "HIGH",
+          "resolution": "",
+          "references": [
+            "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions"
+          ],
+          "code": "requires login",
+          "scanner": "Semgrep",
+          "extra": {
+            "metadata": {
+              "category": "security",
+              "cwe": [
+                "CWE-1357: Reliance on Insufficiently Trustworthy Component",
+                "CWE-353: Missing Support for Integrity Check"
+              ],
+              "owasp": [
+                "A08:2021 - Software and Data Integrity Failures",
+                "A08:2025 - Software and Data Integrity Failures"
+              ],
+              "references": [
+                "https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#using-third-party-actions"
+              ],
+              "technology": [
+                "github-actions"
+              ],
+              "subcategory": [
+                "vuln"
+              ],
+              "likelihood": "MEDIUM",
+              "impact": "HIGH",
+              "confidence": "HIGH",
+              "license": "Semgrep Rules License v1.0. For more details, visit semgrep.dev/legal/rules-license",
+              "vulnerability_class": [
+                "Cryptographic Issues",
+                "Other"
+              ],
+              "source": "https://semgrep.dev/r/yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag",
+              "shortlink": "https://sg.run/2LgAL"
+            }
+          }
+        }
+      ],
+      "raw_output": "                   \n                   \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 3 Code Findings \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n                                                                                          \n    /home/que/Assessment-Mbali/mytestcompany/.github/workflows/pipeline.github-actions.yml\n    \u276f\u2771 yaml.github-actions.security.github-actions-mutable-action-tag.github-actions-mutable-action-tag\n          \u2770\u2770 Blocking \u2771\u2771\n          GitHub Actions step uses a mutable tag or branch reference. Tags and branch names can be silently   \n          repointed by the action owner, enabling supply-chain attacks \u2014 as seen in the trivy-action and kics-\n          github-action compromises. Pin the reference to a full 40-character commit SHA instead, e.g. `uses: \n          actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608`.                                         \n          Details: https://sg.run/2LgAL                                                                       \n                                                                                                              \n           18\u2506 uses: actions/checkout@v4\n            \u22ee\u2506----------------------------------------\n           21\u2506 uses: aws-actions/configure-aws-credentials@v4\n            \u22ee\u2506----------------------------------------\n           27\u2506 uses: hashicorp/setup-terraform@v3\n\n",
+      "raw_error": "               \n               \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Status \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n  Scanning 29 files tracked by git with 1074 Code rules:\n                                                                                                                        \n  Language      Rules   Files          Origin      Rules                                                                \n \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500        \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500                                                               \n  <multilang>      47      29          Community    1074                                                                \n  terraform       101      23                                                                                           \n  yaml             35       2                                                                                           \n                                                                                                                        \n                \n                \n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 Scan Summary \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n\u2705 Scan completed successfully.\n \u2022 Findings: 3 (3 blocking)\n \u2022 Rules run: 183\n \u2022 Targets scanned: 29\n \u2022 Parsed lines: ~100.0%\n \u2022 Scan was limited to files tracked by git\n \u2022 For a detailed list of skipped files and lines, run semgrep with the --verbose flag\nRan 183 rules on 29 files: 3 findings.\n",
+      "version": "1.179.0",
+      "error": "",
+      "stats": {},
+      "severity_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 3,
+        "LOW": 0,
+        "INFO": 0
+      }
+    },
+    {
+      "name": "Trivy",
+      "status": "FAIL",
+      "exit_code": 0,
+      "duration_seconds": 3.3120599359990592,
+      "findings": [
+        {
+          "severity": "HIGH",
+          "title": "Unencrypted SNS topic.",
+          "rule_id": "AWS-0095",
+          "file": "landing-zone-tiers/starter/aws/modules/security/main.tf",
+          "line": "",
+          "resource": "",
+          "module": "",
+          "message": "Topic does not have encryption enabled.",
+          "impact": "Topics should be encrypted to protect their contents.\n",
+          "resolution": "Turn on SNS Topic encryption",
+          "references": [
+            "https://avd.aquasec.com/misconfig/aws-0095"
+          ],
+          "code": "    1: resource \"aws_securityhub_action_target\" \"notify\" {\n    2:   name        = var.custom_actions_config.name\n    3:   description = var.custom_actions_config.description",
+          "scanner": "Trivy",
+          "extra": {}
+        },
+        {
+          "severity": "MEDIUM",
+          "title": "S3 Data should be versioned",
+          "rule_id": "AWS-0090",
+          "file": "terraform-aws-modules/s3-bucket/aws/main.tf",
+          "line": "",
+          "resource": "",
+          "module": "",
+          "message": "Bucket does not have versioning enabled",
+          "impact": "Versioning in Amazon S3 is a means of keeping multiple variants of an object in the same bucket.\n\nYou can use the S3 Versioning feature to preserve, retrieve, and restore every version of every object stored in your buckets.\n\nWith versioning you can recover more easily from both unintended user actions and application failures.\n\nWhen you enable versioning, also keep in mind the potential costs of storing noncurrent versions of objects. To help manage those costs, consider setting up an S3 Lifecycle configuration.\n",
+          "resolution": "Enable versioning to protect against accidental/malicious removal or modification",
+          "references": [
+            "https://avd.aquasec.com/misconfig/aws-0090"
+          ],
+          "code": "",
+          "scanner": "Trivy",
+          "extra": {}
+        },
+        {
+          "severity": "MEDIUM",
+          "title": "VPC Flow Logs is a feature that enables you to capture information about the IP traffic going to and from network interfaces in your VPC. After you've created a flow log, you can view and retrieve its data in Amazon CloudWatch Logs. It is recommended that VPC Flow Logs be enabled for packet \"Rejects\" for VPCs.",
+          "rule_id": "AWS-0178",
+          "file": "terraform-aws-modules/vpc/aws/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf",
+          "line": "",
+          "resource": "",
+          "module": "",
+          "message": "VPC does not have VPC Flow Logs enabled.",
+          "impact": "VPC Flow Logs provide visibility into network traffic that traverses the VPC and can be used to detect anomalous traffic or insight during security workflows.\n",
+          "resolution": "Enable flow logs for VPC",
+          "references": [
+            "https://avd.aquasec.com/misconfig/aws-0178"
+          ],
+          "code": "",
+          "scanner": "Trivy",
+          "extra": {}
+        }
+      ],
+      "raw_output": "\nReport Summary\n\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                                      Target                                      \u2502   Type    \u2502 Misconfigurations \u2502 Secrets \u2502 Vulnerabilities \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 landing-zone-tiers/starter/aws                                                   \u2502 terraform \u2502         0         \u2502    -    \u2502        -        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 landing-zone-tiers/starter/aws/modules/governance                                \u2502 terraform \u2502         0         \u2502    -    \u2502        -        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 landing-zone-tiers/starter/aws/modules/identity                                  \u2502 terraform \u2502         0         \u2502    -    \u2502        -        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 landing-zone-tiers/starter/aws/modules/logging                                   \u2502 terraform \u2502         0         \u2502    -    \u2502        -        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 landing-zone-tiers/starter/aws/modules/security/main.tf                          \u2502 terraform \u2502         1         \u2502    -    \u2502        -        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 terraform-aws-modules/s3-bucket/aws/main.tf                                      \u2502 terraform \u2502         1         \u2502    -    \u2502        -        \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 terraform-aws-modules/vpc/aws/landing-zone-tiers/starter/aws/.terraform/modules- \u2502 terraform \u2502         1         \u2502    -    \u2502        -        \u2502\n\u2502 /networking.vpc/main.tf                                                          \u2502           \u2502                   \u2502         \u2502                 \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\nLegend:\n- '-': Not scanned\n- '0': Clean (no security findings detected)\n\n\nlanding-zone-tiers/starter/aws/modules/security/main.tf (terraform)\n===================================================================\nTests: 1 (SUCCESSES: 0, FAILURES: 1)\nFailures: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 0)\n\nAWS-0095 (HIGH): Topic does not have encryption enabled.\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nTopics should be encrypted to protect their contents.\n\n\nSee https://avd.aquasec.com/misconfig/aws-0095\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n landing-zone-tiers/starter/aws/modules/security/main.tf:7-9\n   via landing-zone-tiers/starter/aws/landing-zone.tf:53-65 (module.security)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n   7 \u250c resource \"aws_sns_topic\" \"security_alerts\" {\n   8 \u2502   name = var.custom_actions_config.sns_topic_name\n   9 \u2514 }\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n\n\nterraform-aws-modules/s3-bucket/aws/main.tf (terraform)\n=======================================================\nTests: 1 (SUCCESSES: 0, FAILURES: 1)\nFailures: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 0)\n\nAWS-0090 (MEDIUM): Bucket does not have versioning enabled\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nVersioning in Amazon S3 is a means of keeping multiple variants of an object in the same bucket.\n\nYou can use the S3 Versioning feature to preserve, retrieve, and restore every version of every object stored in your buckets.\n\nWith versioning you can recover more easily from both unintended user actions and application failures.\n\nWhen you enable versioning, also keep in mind the potential costs of storing noncurrent versions of objects. To help manage those costs, consider setting up an S3 Lifecycle configuration.\n\n\nSee https://avd.aquasec.com/misconfig/aws-0090\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n terraform-aws-modules/s3-bucket/aws/main.tf:64-76\n   via landing-zone-tiers/starter/aws/modules/logging/main.tf:31-43 (module.source_s3_bucket)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  64 \u250c resource \"aws_s3_bucket\" \"this\" {\n  65 \u2502   count = local.create_bucket && !var.is_directory_bucket ? 1 : 0\n  66 \u2502 \n  67 \u2502   region = var.region\n  68 \u2502 \n  69 \u2502   bucket           = var.bucket\n  70 \u2502   bucket_prefix    = var.bucket_prefix\n  71 \u2502   bucket_namespace = var.bucket_namespace\n  72 \u2514 \n  ..   \n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n\n\nterraform-aws-modules/vpc/aws/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf (terraform)\n==================================================================================================================\nTests: 1 (SUCCESSES: 0, FAILURES: 1)\nFailures: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 0)\n\nAWS-0178 (MEDIUM): VPC does not have VPC Flow Logs enabled.\n\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\nVPC Flow Logs provide visibility into network traffic that traverses the VPC and can be used to detect anomalous traffic or insight during security workflows.\n\n\nSee https://avd.aquasec.com/misconfig/aws-0178\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n terraform-aws-modules/vpc/aws/landing-zone-tiers/starter/aws/.terraform/modules/networking.vpc/main.tf:28-53\n   via landing-zone-tiers/starter/aws/modules/networking/vpc.tf:1-24 (module.vpc)\n    via landing-zone-tiers/starter/aws/landing-zone.tf:1-25 (module.networking)\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n  28 \u250c resource \"aws_vpc\" \"this\" {\n  29 \u2502   count = local.create_vpc ? 1 : 0\n  30 \u2502 \n  31 \u2502   region = var.region\n  32 \u2502 \n  33 \u2502   cidr_block          = var.use_ipam_pool ? null : var.cidr\n  34 \u2502   ipv4_ipam_pool_id   = var.ipv4_ipam_pool_id\n  35 \u2502   ipv4_netmask_length = var.ipv4_netmask_length\n  36 \u2514 \n  ..   \n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n\n\n",
+      "raw_error": "2026-10-06T13:14:15+02:00\tINFO\t[vuln] Vulnerability scanning is enabled\n2026-10-06T13:14:15+02:00\tINFO\t[misconfig] Misconfiguration scanning is enabled\n2026-10-06T13:14:15+02:00\tINFO\t[checks-client] Using existing checks from cache\tpath=\"/home/que/.cache/trivy/policy/content\"\n2026-10-06T13:14:16+02:00\tINFO\t[secret] Secret scanning is enabled\n2026-10-06T13:14:16+02:00\tINFO\t[secret] If your scanning is slow, please try '--scanners misconfig,vuln' to disable secret scanning\n2026-10-06T13:14:16+02:00\tINFO\t[secret] Please see https://trivy.dev/docs/v0.75/guide/scanner/secret#recommendation for faster secret detection\n2026-10-06T13:14:16+02:00\tINFO\t[terraform scanner] Scanning root module\tfile_path=\"landing-zone-tiers/starter/aws\"\n2026-10-06T13:14:16+02:00\tINFO\t[terraform scanner] Scanning root module\tfile_path=\"landing-zone-tiers/starter/aws/modules/governance\"\n2026-10-06T13:14:16+02:00\tINFO\t[terraform scanner] Scanning root module\tfile_path=\"landing-zone-tiers/starter/aws/modules/identity\"\n2026-10-06T13:14:16+02:00\tWARN\t[terraform parser] Variable values were not found in the environment or variable files. Evaluating may not work correctly.\tmodule=\"root\" variables=\"audit_role_name\"\n2026-10-06T13:14:16+02:00\tINFO\t[terraform scanner] Scanning root module\tfile_path=\"landing-zone-tiers/starter/aws/modules/logging\"\n2026-10-06T13:14:18+02:00\tINFO\tNumber of language-specific files\tnum=0\n2026-10-06T13:14:18+02:00\tINFO\tDetected config files\tnum=7\n",
+      "version": "Version: 0.75.0",
+      "error": "",
+      "stats": {},
+      "severity_counts": {
+        "CRITICAL": 0,
+        "HIGH": 1,
+        "MEDIUM": 2,
+        "LOW": 0,
+        "INFO": 0
+      }
+    },
+    {
+      "name": "Gitleaks",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 0.4455809950013645,
+      "findings": [],
+      "raw_output": "",
+      "raw_error": "\u001b[90m1:14PM\u001b[0m \u001b[32mINF\u001b[0m \u001b[1m8 commits scanned.\u001b[0m\n\u001b[90m1:14PM\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mscanned ~25269 bytes (25.27 KB) in 170ms\u001b[0m\n\u001b[90m1:14PM\u001b[0m \u001b[32mINF\u001b[0m \u001b[1mno leaks found\u001b[0m\n",
+      "version": "gitleaks version 8.30.1",
+      "error": "",
+      "stats": {},
+      "severity_counts": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "INFO": 0
+      }
+    }
+  ]
+}

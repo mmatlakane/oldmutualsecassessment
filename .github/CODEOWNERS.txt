@@ -1,0 +1,10 @@
+# Default repository ownership
+* @platform-team
+
+/.github/ @platform-team
+/security/ @security-team
+
+
+
+README.md @platform-team
+SECURITY.md @security-team
